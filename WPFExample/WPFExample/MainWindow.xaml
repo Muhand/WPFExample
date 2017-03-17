@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFExample"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="Login Window" Height="480" Width="640">
+    <Grid Name="body" Background="Red">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"/>        <!-- Sidebar -->
+            <ColumnDefinition Width="0.8*"/>        <!-- MainContent Wrapper-->
+        </Grid.ColumnDefinitions>
+        
+        
+        <!-- Sidebar -->
+        <Grid Name="sidebar" Column="0" Background="Orange">
+            <Button Name="menuBtn">
+                
+            </Button>
+        </Grid>
+        
+        <!-- Main Content Wrapper -->
+        <Grid Name="contentWrapper" Column="1" Background="Blue">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*"/>      <!-- Header -->
+                <RowDefinition Height="0.7*"/>      <!-- Content-->
+                <RowDefinition Height="0.1*"/>      <!-- Footer -->    
+            </Grid.RowDefinitions>
+            
+            
+            <Grid Name="header" Grid.Row="0">
+                <Label Name="headerLabel" Content="Welcome To XYZ" FontSize="30" FontWeight="ExtraBold" FontFamily="Arial" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+            </Grid>
+
+            <Grid Name="content" Grid.Row="1" Background="Aqua">
+                
+
+                <StackPanel Name="form" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200">
+                    <TextBox Name="usernameField"/>
+                    <PasswordBox Name="passwordField"/>
+                    <Button Name="loginBtn"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Name="footer" Grid.Row="2">
+                <Label Name="footerLabel" Content="Copyright © mTech" FontSize="20" FontFamily="Arial" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+            </Grid>
+        </Grid>
         
     </Grid>
 </Window>
