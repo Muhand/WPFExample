@@ -6,22 +6,36 @@
         xmlns:local="clr-namespace:WPFExample"
         mc:Ignorable="d"
         Title="Login Window" Height="480" Width="640">
-    <Grid Name="body" Background="Red">
+    <Grid Name="body">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.2*"/>        <!-- Sidebar -->
+            <ColumnDefinition Width="0.2*" Name="sideBarColumn"/>        <!-- Sidebar -->
             <ColumnDefinition Width="0.8*"/>        <!-- MainContent Wrapper-->
         </Grid.ColumnDefinitions>
         
         
         <!-- Sidebar -->
-        <Grid Name="sidebar" Column="0" Background="Orange">
-            <Button Name="menuBtn">
-                
-            </Button>
-        </Grid>
-        
+        <Border BorderBrush="Black" BorderThickness="0 0 3 0" Grid.Column="0">
+            <Grid Name="sidebar">
+                <Button Name="menuBtn" HorizontalAlignment="Right" VerticalAlignment="Top" Content="OPEN" Click="MenuBtn_OnClick"/>
+                <StackPanel Margin="0 25 0 0">
+                    <StackPanel.Resources>
+                        <Style TargetType="Label">
+                            <EventSetter Event="Mouse.MouseEnter" Handler="EventSetter_OnHandler"/>
+                            <EventSetter Event="Mouse.MouseLeave" Handler="EventSetters_OnHandler"/>
+
+                        </Style>
+                    </StackPanel.Resources>
+                    <Label Content="Menu1"/>
+                    <Label Content="Menu1"/>
+                    <Label Content="Menu1"/>
+                    <Label Content="Menu1"/>
+                    <Label Content="Menu1"/>
+                    
+                </StackPanel>
+            </Grid>
+        </Border>
         <!-- Main Content Wrapper -->
-        <Grid Name="contentWrapper" Column="1" Background="Blue">
+        <Grid Name="contentWrapper" Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.2*"/>      <!-- Header -->
                 <RowDefinition Height="0.7*"/>      <!-- Content-->
@@ -29,17 +43,34 @@
             </Grid.RowDefinitions>
             
             
-            <Grid Name="header" Grid.Row="0">
-                <Label Name="headerLabel" Content="Welcome To XYZ" FontSize="30" FontWeight="ExtraBold" FontFamily="Arial" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
-            </Grid>
-
-            <Grid Name="content" Grid.Row="1" Background="Aqua">
+            <Border BorderBrush="Gray" BorderThickness="0 0 0 3">
+                <Grid Name="header" Grid.Row="0">
+                    <Label Name="headerLabel" Content="Welcome To XYZ" FontSize="30" FontWeight="ExtraBold" FontFamily="Arial" VerticalAlignment="Center" Margin="15, 0, 0, 0"/>
+                </Grid>
+            </Border>
+            <Grid Name="content" Grid.Row="1">
                 
 
                 <StackPanel Name="form" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200">
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBox">
+                            <Setter Property="Margin" Value="0,0,0,10"/>
+                            <Setter Property="Height" Value="30"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                            <Setter Property="FontSize" Value="20"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="FontFamily" Value="Arial"/>
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Style>
+                        <Style TargetType="Button">
+                            <Setter Property="FontSize" Value="16"/>
+                        </Style>
+
+                    </StackPanel.Resources>
+                    
                     <TextBox Name="usernameField"/>
-                    <PasswordBox Name="passwordField"/>
-                    <Button Name="loginBtn"/>
+                    <TextBox Name="passwordField"/>
+                    <Button Name="loginBtn" Content="Login"/>
                 </StackPanel>
             </Grid>
 
